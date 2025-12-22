@@ -20,6 +20,9 @@
     <script src="bootstrap/js/popper.min.js"></script>
     <%-- bootstrap js --%>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+      <%-- datatable js --%>
+    <script src="datatables/js/dataTables.min.js"></script>
+    
 
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -54,23 +57,23 @@
                     <!--ASP links! right-->
                    <ul class ="navbar-nav">
                         <li class ="nav-item active">
-                             <asp:LinkButton Class ="nav-link" ID ="LinkButton4" runat="server" OnClick="LinkButton4_Click"
+                             <asp:LinkButton CssClass ="nav-link" ID ="LinkButton4" runat="server" OnClick="LinkButton4_Click"
                               >View Books</asp:LinkButton>
                          </li>
                         <li class ="nav-item active">
-                              <asp:LinkButton Class ="nav-link" ID ="LinkButton1" runat="server" OnClick="LinkButton1_Click"
+                              <asp:LinkButton CssClass ="nav-link" ID ="LinkButton1" runat="server" OnClick="LinkButton1_Click"
                               >User Login</asp:LinkButton>
                          </li>
                        <li class ="nav-item active">
-                            <asp:LinkButton Class ="nav-link" ID ="LinkButton2" runat="server" OnClick="LinkButton2_Click"
+                            <asp:LinkButton CssClass ="nav-link" ID ="LinkButton2" runat="server" OnClick="LinkButton2_Click"
                              >Sign up</asp:LinkButton>
                         </li>
                        <li class ="nav-item active">
-                            <asp:LinkButton Class ="nav-link" ID ="LinkButton3" runat="server"  Visible="false"
+                            <asp:LinkButton CssClass ="nav-link" ID ="LinkButton3" runat="server"  Visible="false" OnClick="LinkButton3_Click"
                              >Logout</asp:LinkButton>
                        </li>
                        <li class ="nav-item active">
-                             <asp:LinkButton Class ="nav-link" ID ="LinkButton5" runat="server" visible="false"
+                             <asp:LinkButton CssClass ="nav-link" ID ="LinkButton5" runat="server" visible="false"
                               >Hello User</asp:LinkButton>
                        </li>
 
@@ -114,7 +117,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <p style="color: whitesmoke;">
                     &copy; All rights Reserved.
-                    <a Cssclass="footerlinks" href="#" target="_blank">JayaCodes</a>
+                    <a class="footerlinks" href="#" target="_blank">JayaCodes</a>
                 </p>
             </div>
         </div>

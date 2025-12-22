@@ -34,17 +34,17 @@
       <div class="col">
           <label>Member ID</label>
          <div class="form-group">
-             <asp:TextBox CssClass=" form-control" runat="server" placeholder="Member ID"></asp:TextBox>
+             <asp:TextBox CssClass=" form-control" runat="server" placeholder="Member ID" ID="TextBox1"></asp:TextBox>
 
          </div>
            <label>Password</label>
 <div class="form-group">
-    <asp:TextBox CssClass=" form-control" runat="server" placeholder="Member Password" TextMode="Password"></asp:TextBox>
+    <asp:TextBox CssClass=" form-control" runat="server" placeholder="Member Password" TextMode="Password" ID="TextBox2"></asp:TextBox>
 
 </div>
                     
 <div class="form-group">
-    <asp:Button class="btn btn-success btn-block btn-lg" ID="Button1" runat="server" Text="Log in" />
+    <asp:Button class="btn btn-success btn-block btn-lg" ID="Button1" runat="server" Text="Log in" OnClick="Button1_Click" />
 
 </div>
           <div class="form-group">
