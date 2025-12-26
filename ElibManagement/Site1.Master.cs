@@ -134,5 +134,11 @@ namespace ElibManagement
             LinkButton10.Visible = false;
             Response.Redirect("homepage.aspx");
         }
+
+        //hello user link
+        protected void LinkButton5_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UserProfile.aspx");
+        }
     }
 }

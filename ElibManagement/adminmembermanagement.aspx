@@ -37,7 +37,7 @@
                     <label>Member ID</label>
                     <div class="input-group">
                         <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" />
-                        <asp:LinkButton ID="LinkButton4" runat="server" CssClass="btn btn-primary" OnClick="LinkButton4_Click">
+                        <asp:LinkButton ID="LinkButton4" runat="server" CssClass="btn btn-dark" OnClick="LinkButton4_Click">
                             <i class="fas fa-search"></i>
                         </asp:LinkButton>
                     </div>

@@ -73,7 +73,7 @@
                              >Logout</asp:LinkButton>
                        </li>
                        <li class ="nav-item active">
-                             <asp:LinkButton CssClass ="nav-link" ID ="LinkButton5" runat="server" visible="false"
+                             <asp:LinkButton CssClass ="nav-link" ID ="LinkButton5" runat="server" visible="false" OnClick="LinkButton5_Click"
                               >Hello User</asp:LinkButton>
                        </li>
 

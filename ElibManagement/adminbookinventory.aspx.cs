@@ -12,6 +12,8 @@ namespace ElibManagement
     public partial class adminbookinventory : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["elibrarydbConnectionString"].ConnectionString;
+        static string global_filepath;
+        static int global_actual_stock, global_current_stock, global_issued_books;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -147,7 +149,7 @@ namespace ElibManagement
                     fileupload1.SaveAs(savePath);
                     filepath = "~/book_inventory/" + filename;
 
-                    // Update preview
+                    // Update preview immediately
                     img.ImageUrl = filepath;
                 }
 
@@ -165,14 +167,14 @@ namespace ElibManagement
                 {
                     con.Open();
                     string query = @"
-            INSERT INTO book_master_tbl
-            (book_id, book_name, genre, author_name, publisher_name,
-             publish_date, language, edition, book_cost, no_of_pages,
-             book_description, actual_stock, current_stock, book_img_link)
-            VALUES
-            (@book_id, @book_name, @genre, @author_name, @publisher_name,
-             @publish_date, @language, @edition, @book_cost, @no_of_pages,
-             @book_description, @actual_stock, @current_stock, @book_img_link)";
+        INSERT INTO book_master_tbl
+        (book_id, book_name, genre, author_name, publisher_name,
+         publish_date, language, edition, book_cost, no_of_pages,
+         book_description, actual_stock, current_stock, book_img_link)
+        VALUES
+        (@book_id, @book_name, @genre, @author_name, @publisher_name,
+         @publish_date, @language, @edition, @book_cost, @no_of_pages,
+         @book_description, @actual_stock, @current_stock, @book_img_link)";
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
@@ -197,18 +199,36 @@ namespace ElibManagement
 
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Book added successfully');", true);
 
-                // Rebind GridView to show correct image
+                // Rebind GridView
                 GridView1.DataBind();
 
-                // Reset fileupload after postback so user can choose new file if needed
-                fileupload1.Attributes.Clear();
+                // Reset form fields
+                txtBookID.Text = "";
+                textbox2.Text = "";
+                bookcost.Text = "";
+                pages.Text = "";
+                actual.Text = "";
+                edition.Text = "";
+                txtPublishDate.Text = "";
+                txtBookDescription.Text = "";
+                DropDownList1.SelectedIndex = 0;
+                DropDownList2.SelectedIndex = 0;
+                DropDownList4.SelectedIndex = 0;
+                for (int i = 0; i < ListBox3.Items.Count; i++)
+                    ListBox3.Items[i].Selected = false;
 
+                // Reset image to default
+                img.ImageUrl = "~/book_inventory/booksearch.jpg";
+
+                // Clear FileUpload
+                fileupload1.Attributes.Clear();
             }
             catch (Exception ex)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('Error: {ex.Message}');", true);
             }
         }
+
         void updateBook()
         {
             try
@@ -326,13 +346,37 @@ namespace ElibManagement
                 }
 
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Book deleted successfully');", true);
+
+                // Rebind GridView
                 GridView1.DataBind();
+
+                // Reset form fields
+                txtBookID.Text = "";
+                textbox2.Text = "";
+                bookcost.Text = "";
+                pages.Text = "";
+                actual.Text = "";
+                edition.Text = "";
+                txtPublishDate.Text = "";
+                txtBookDescription.Text = "";
+                DropDownList1.SelectedIndex = 0;
+                DropDownList2.SelectedIndex = 0;
+                DropDownList4.SelectedIndex = 0;
+                for (int i = 0; i < ListBox3.Items.Count; i++)
+                    ListBox3.Items[i].Selected = false;
+
+                // Reset image to default
+                img.ImageUrl = "~/book_inventory/booksearch.jpg";
+
+                // Clear FileUpload
+                fileupload1.Attributes.Clear();
             }
             catch (Exception ex)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('Error: {ex.Message}');", true);
             }
         }
+
 
         void getBookByID()
         {
@@ -380,6 +424,7 @@ namespace ElibManagement
                             {
                                 img.ImageUrl = "~/booksearch.jpg";
                             }
+                            
                         }
                         else
                         {

@@ -11,6 +11,7 @@ namespace ElibManagement
     public partial class adminlogin : System.Web.UI.Page
     {
         string strcon = System.Configuration.ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+       
         protected void Page_Load(object sender, EventArgs e)
         {
 
